@@ -11,6 +11,7 @@ in
     ./modules/ssh.nix
     ./modules/nginx.nix
     ./modules/zsh.nix
+    ./modules/security.nix
 
     ./modules/container.nix
     ./sites/sites.nix
@@ -22,13 +23,8 @@ in
 
   #boot.isContainer = true;
   boot.loader.systemd-boot.enable = true;
-  boot.loader.grub = { 
-   enable = false;
-   efiSupport = true;
-  };  
-  boot.loader.grub.device = "/dev/vda1";
  
-  users.defaultUserShell = pkgs.zsh;
+  time.timeZone = "Europe/Berlin";
   environment.systemPackages = with pkgs; [
     # utils
     htop
