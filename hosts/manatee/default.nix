@@ -1,5 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, ... }:
-
+{ pkgs , ... }:
 let
   NIXOS_VERSION = "25.11";
 in
