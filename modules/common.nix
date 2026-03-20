@@ -1,8 +1,9 @@
 {
    imports = [ 
-     ./user.nix
+     ./users.nix
      ./networking.nix
      ./ssh.nix
      ./security.nix
      ./zsh.nix
+   ];
 }
