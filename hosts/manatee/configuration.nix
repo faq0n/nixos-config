@@ -6,14 +6,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/networking.nix
-    ./modules/users.nix
-    ./modules/ssh.nix
-    ./modules/nginx.nix
-    ./modules/zsh.nix
-    ./modules/security.nix
-
-    ./modules/container.nix
+    #  enable sites module 
     ./sites/sites.nix
   ];
   
