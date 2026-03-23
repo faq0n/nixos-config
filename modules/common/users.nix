@@ -10,31 +10,13 @@ in
       "${DEFAULT_USER_NAME}" = {
         initialPassword = DEFAULT_USER_PASSWORD;
         isNormalUser = true;
+	extraGroups = [ DEFAULT_USER_NAME "wheel" ];
         openssh.authorizedKeys.keys = [
           DEFAULT_SSH_AUTHORIZED_KEY
         ];
       };
     };
-    extraUsers = {
-      # disable password login for root
-      root = {
-        password = "";
-      };
-    };
-
-    groups = {
-      "${DEFAULT_USER_NAME}" = {
-        members = [
-          DEFAULT_USER_NAME
-        ];
-      };
-    };
-    extraGroups = {
-      "wheel" = {
-        members = [
-          DEFAULT_USER_NAME
-        ];
-      };
-    };
   };
+  security.sudo.wheelNeedsPassword = false;
+
 }

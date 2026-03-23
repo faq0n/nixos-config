@@ -1,5 +1,9 @@
 # https://nixos.wiki/wiki/Nginx
 {
+  imports = [
+    ./fail2ban.nix
+  ];
+
   services.nginx = {
     enable = true;
 

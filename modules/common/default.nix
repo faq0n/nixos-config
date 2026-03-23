@@ -3,7 +3,7 @@
      ./users.nix
      ./networking.nix
      ./ssh.nix
-     ./security.nix
+     ./git.nix
      ./zsh.nix
    ];
 }

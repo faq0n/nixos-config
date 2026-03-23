@@ -52,7 +52,7 @@
         specialArgs = { inherit inputs hostname secrets; };
         modules = [
           # Shared modules for every system
-          ./modules/common.nix
+          ./modules/common
           
           # Specific host configuration
           ./hosts/${hostname}
@@ -76,9 +76,8 @@
         hostname = "manatee";
 	system = "x86_64-linux";
         modules = [
-          #./hosts/manatee/configuration.nix // taken from helper function
-	  ./modules/git.nix
-	  ./modules/server.nix
+          #./hosts/manatee/configuration.nix // taken in helper function
+	  ./modules/server
         ];
       };
       # Example ARM Server
