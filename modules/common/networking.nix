@@ -36,7 +36,7 @@ in
     #};
 
     firewall = {
-      enable = true;
+      enable = lib.mkForce true;
 
       # set empty and force to declare per interface
       allowedTCPPorts = [ 2222 ];

@@ -17,6 +17,10 @@
 
     # Hardware Enablement
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-crostini = { 
+      url = "github:aldur/nixos-crostini";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-aarch64-widevine.url = "github:epetousis/nixos-aarch64-widevine";
     i915-sriov = { 
        url = "github:strongtz/i915-sriov-dkms";
@@ -42,7 +46,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nur, home-manager, helix, nix-colors, disko, agenix, ... }: let
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-crostini, nur, home-manager, helix, nix-colors, disko, agenix, ... }: let
     # simple secrets passthru
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     # Helper function to reduce boilerplate for each host
@@ -80,6 +84,16 @@
 	  ./modules/server
         ];
       };
+      # chromebook vm
+      wolverine = mkSystem {
+        hostname = "wolverine";
+        system = "aarch64-linux";
+	modules = [
+	  #./hosts/wolverine/default.nix
+	  nixos-crostini.nixosModules.baguette
+        ];
+      };
+
       # Example ARM Server
       arm-server = mkSystem {
         hostname = "arm-server";
