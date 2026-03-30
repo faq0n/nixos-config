@@ -91,6 +91,11 @@
 	modules = [
 	  #./hosts/wolverine/default.nix
 	  nixos-crostini.nixosModules.baguette
+	  {  
+	    # TODO replace user with your own username
+            home-manager.users.user = import ./home.nix;
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+	  }
         ];
       };
 

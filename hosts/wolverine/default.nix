@@ -70,27 +70,28 @@
   security.sudo.wheelNeedsPassword = false;
 
 
-  # programs.firefox.enable = true;
+  programs.firefox.enable = true;
   programs.mosh.enable = true;
-
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
   programs.git.enable = true;
   
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    obsidian
+    usbutils
+    rclone
     curl
     git-crypt
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
