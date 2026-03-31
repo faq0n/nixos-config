@@ -92,7 +92,7 @@
 	  #./hosts/wolverine/default.nix
 	  nixos-crostini.nixosModules.baguette
 	  {  
-	    # TODO replace user with your own username
+	    # TODO replace user with your own username in home.nix
             home-manager.users.user = import ./home.nix;
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
 	    home-manager.extraSpecialArgs = { inherit inputs secrets; };

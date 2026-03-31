@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
-  # TODO please change the username & home directory to your own
   home.username = "user";
   home.homeDirectory = "/home/user";
 
@@ -32,7 +30,7 @@
    
     neovim
     neofetch
-    lf # terminal file manager
+    ansible
 
     # archives
     zip
@@ -74,6 +72,8 @@
     # with more details log output
     nix-output-monitor
     nixd
+    nix-prefetch-github
+
     # productivity
     glow # markdown previewer in terminal
 
@@ -130,12 +130,12 @@
     enableCompletion = true;
     # TODO add your custom bashrc here
     bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.npm-global"
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/:$HOME/.npm-global"
     '';
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
-      basedecode = "base64 --decode";
+      keycode = "base64 --decode /tmp/secret.key | git-crypt unlock -";
       urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
       urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
     };
