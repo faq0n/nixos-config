@@ -80,7 +80,6 @@
         hostname = "manatee";
 	system = "x86_64-linux";
         modules = [
-          #./hosts/manatee/configuration.nix // taken in helper function
 	  ./modules/server
         ];
       };
@@ -89,7 +88,6 @@
         hostname = "wolverine";
         system = "aarch64-linux";
 	modules = [
-	  #./hosts/wolverine/default.nix
 	  nixos-crostini.nixosModules.baguette
 	  {  
 	    # TODO replace user with your own username in home.nix
