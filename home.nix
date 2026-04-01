@@ -20,7 +20,10 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
-
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
   # set cursor size and dpi for wayland
 
   # Packages that should be installed to the user profile.
@@ -31,6 +34,7 @@
     neovim
     neofetch
     ansible
+    obsidian 
 
     # archives
     zip
