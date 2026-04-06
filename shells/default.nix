@@ -9,7 +9,7 @@
      lolcat
      nodejs
      jq
-     nmap
+     net-tools
    ];
 
    GREETING = "Hello, to Nix!";

@@ -21,4 +21,16 @@ in
       KexAlgorithms = ALLOWED_SSH_KEY_TYPES;
     };
   };
+  programs.ssh = {
+    extraConfig = "
+      Host manatee
+        Hostname 152.53.132.54
+        Port 2222
+        User faq0n
+      Host menticare
+        Hostname 152.53.249.159
+	User faq0n
+    ";
+    startAgent = true;
+  };
 }

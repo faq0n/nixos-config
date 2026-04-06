@@ -40,5 +40,5 @@
     };
   };
   security.acme.acceptTerms = true;
-  security.acme.defaults.email = "faqun+acme@mailbox.org";
+  security.acme.defaults.email = "fakun@mentica.re";
 }
