@@ -1,4 +1,4 @@
-{
+{ pkgs, lib, config, ... }:{
    imports = [ 
      ./users.nix
      ./programs.nix

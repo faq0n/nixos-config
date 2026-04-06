@@ -6,8 +6,4 @@
     autosuggestions.enable = true;
   };
   
-  programs.zsh.sessionVariables = {
-      QT_QPA_PLATFORM = "wayland";
-  };
-
-
+}

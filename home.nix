@@ -36,6 +36,7 @@
     ansible
     obsidian 
 
+    opencode
     # archives
     zip
     xz
