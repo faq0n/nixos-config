@@ -1,7 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  home.username = "user";
-  home.homeDirectory = "/home/user";
 
   # Import files from the current configuration directory into the Nix store,
   # and create symbolic links pointing to those store files in the Home directory.
@@ -33,7 +31,6 @@
    
     neovim
     neofetch
-    nixfmt
     just
     ansible
     obsidian 

@@ -296,6 +296,7 @@
   # Gnome apps configuration
   services.gvfs.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = !config.services.gnome.gnome-keyring.enable;
   services.dbus = {
     enable = true;
     packages = [

@@ -95,8 +95,8 @@
 	system = "x86_64-linux";
 	modules =  [
 	  nixos-hardware.nixosModules.common-gpu-intel
-	  {  
-            home-manager.users.user = import ./home.nix;
+	  { 
+            home-manager.users.faq0n = import ./home.nix;
 	    home-manager.extraSpecialArgs = { inherit inputs secrets; };
 	  }
 	  {
