@@ -26,6 +26,8 @@
 
         # Direnv hook
         eval "$(direnv hook bash)"
+	# zoixde 
+	eval "$(zoxide init bash)"
 
         # fzf keybindings
         #[ -f ${pkgs.fzf}/share/fzf/key-bindings.bash ] && source ${pkgs.fzf}/share/fzf/key-bindings.bash

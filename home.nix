@@ -34,6 +34,8 @@
     just
     ansible
     obsidian 
+    kubectl
+    minikube
 
     # archives
     zip
@@ -73,6 +75,7 @@
     #
     # it provides the command `nom` works just like `nix`
     # with more details log output
+    nixfmt-rfc-style
     nix-output-monitor
     nixd
     nix-prefetch-github
