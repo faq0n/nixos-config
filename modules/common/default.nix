@@ -1,11 +1,16 @@
-{ pkgs, lib, config, ... }:{
-   imports = [ 
-     ./users.nix
-     ./programs.nix
-
-     ./networking.nix
-     ./ssh.nix
-     ./git.nix
-     ./zsh.nix
-   ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  imports = [
+    ./programs.nix
+    ./editor.nix
+    ./networking.nix
+    ./ssh.nix
+    ./git.nix
+    ./zsh.nix
+  ];
 }

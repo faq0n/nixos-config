@@ -46,7 +46,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-crostini, nur, home-manager, helix, nix-colors, disko, agenix, ... }: let
+  outputs = inputs@{ 
+  	self,
+	nixpkgs,
+	nixpkgs-unstable,
+	nixos-crostini,
+	nixos-hardware,
+	nix-colors,
+	nur,
+	i915-sriov,
+	helix,
+	home-manager,
+	disko,
+	agenix,
+	... 
+  }: let
     # simple secrets passthru
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     # Helper function to reduce boilerplate for each host
@@ -75,7 +89,31 @@
       };
     in {
     nixosConfigurations = {
-      # manatee 
+      # desktop
+      ursus = mkSystem { 
+        hostname = "ursus";
+	system = "x86_64-linux";
+	modules =  [
+	  nixos-hardware.nixosModules.common-gpu-intel
+	  {  
+            home-manager.users.user = import ./home.nix;
+	    home-manager.extraSpecialArgs = { inherit inputs secrets; };
+	  }
+	  {
+           imports = [ ./hosts/ursus/disko-config.nix ];
+           boot.supportedFilesystems = [ "zfs" ];
+           boot.zfs.devNodes = "/dev/disk/by-uuid";
+           #boot.zfs.forceImportAll = true;
+           disko.devices.disk.root.device =
+              "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNX0T711652Z_1";
+           disko.devices.disk.data1.device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_2TB_S6Z2NU0XA82280B_1";
+           disko.devices.disk.data2.device = "/dev/disk/by-id/ata-SanDisk_SSD_PLUS_2000GB_224460800723";
+          }
+        ];
+      
+      };
+
+      # server 
       manatee = mkSystem {
         hostname = "manatee";
 	system = "x86_64-linux";
