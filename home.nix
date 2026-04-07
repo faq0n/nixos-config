@@ -33,10 +33,11 @@
    
     neovim
     neofetch
+    nixfmt
+    just
     ansible
     obsidian 
 
-    opencode
     # archives
     zip
     xz

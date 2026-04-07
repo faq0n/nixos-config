@@ -3,11 +3,8 @@
    environment.systemPackages = with pkgs; [
      # add packages according to alphabet
 	
-     nixfmt-tree
-     textadept
-     just
-     minio-client
-     pwgen
+     bash-git-prompt
+     zoxide
   ];
 
   programs = {
@@ -18,7 +15,7 @@
         export PS1="\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
 
         # Better defaults
-        export EDITOR=nvim
+        export EDITOR=helix
         export PAGER=less
 
         # History improvements
@@ -49,13 +46,6 @@
       nix-direnv.enable = true;
     };
 
-    git = {
-      enable = true;
-      config = {
-        init.defaultBranch = "main";
-        pull.rebase = false;
-      };
-    };
   };
 
 

@@ -11,6 +11,8 @@
           insteadOf = "https://gitlab.com";
         };
       };
+      init.defaultBranch = "main";
+      pull.rebase = false;
     };
   };
 }

@@ -6,11 +6,10 @@
 }:
 {
   imports = [
-    ./programs.nix
-    ./editor.nix
-    ./networking.nix
+    ./bash.nix
     ./ssh.nix
     ./git.nix
     ./zsh.nix
   ];
+  environment.systemPackages = [ pkgs.helix ];
 }
