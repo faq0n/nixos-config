@@ -137,11 +137,28 @@
     # TODO add your custom bashrc here
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/:$HOME/.npm-global"
-    '';
+      # Simple readable prompt (Crostini has poor defaults)
+      export PS1="\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
 
-    # set some aliases, feel free to add more or remove some
+        # Direnv hook
+        # eval "$(direnv hook bash)"
+
+        # fzf keybindings
+      [ -f ${pkgs.fzf}/share/fzf/key-bindings.bash ] && source ${pkgs.fzf}/share/fzf/key-bindings.bash
+      [ -f ${pkgs.fzf}/share/fzf/completion.bash ] && source ${pkgs.fzf}/share/fzf/completion.bash
+	
+       # zoixde 
+       # eval "$(zoxide init bash)" 
+    '';
+    
     shellAliases = {
-      keycode = "base64 --decode /tmp/secret.key | git-crypt unlock -";
+
+      grep = "rg";
+      cd = "z";
+
+      "..." = "cd ../..";
+
+      gitdecode = "base64 --decode /tmp/secret.key | git-crypt unlock -";
       urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
       urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
     };
@@ -155,5 +172,5 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "25.11";
+  homestateVersion = "25.11";
 }

@@ -1,6 +1,6 @@
  let
-   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-25.11";
-   pkgs = import nixpkgs { config = {}; overlays = []; };
+   # pkgs ? import <nixpkgs> { config = {}; overlays = []; };
+   pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/f8062ac096b268957e41ddfc25fb4eada4d30440.tar.gz") {};
  in
 
  pkgs.mkShellNoCC {
@@ -9,13 +9,12 @@
      lolcat
      nodejs
      jq
-     net-tools
+
    ];
 
    GREETING = "Hello, to Nix!";
    shellHook = ''
      echo $GREETING | cowsay | lolcat
-     eval $(ssh-agent)
      ssh-add $HOME/.ssh/id_lynx
    '';
  }
