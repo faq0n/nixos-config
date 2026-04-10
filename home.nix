@@ -148,13 +148,12 @@
       [ -f ${pkgs.fzf}/share/fzf/completion.bash ] && source ${pkgs.fzf}/share/fzf/completion.bash
 	
        # zoixde 
-       # eval "$(zoxide init bash)" 
+       eval "$(zoxide init bash)" 
     '';
     
     shellAliases = {
 
       grep = "rg";
-      cd = "z";
 
       "..." = "cd ../..";
 
@@ -172,5 +171,5 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  homestateVersion = "25.11";
+  home.stateVersion = "25.11";
 }
