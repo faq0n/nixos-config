@@ -111,9 +111,9 @@
               imports = [ ./hosts/ursus/disko-config.nix ];
               boot.supportedFilesystems = [ "zfs" ];
               boot.zfs.devNodes = "/dev/disk/by-uuid";
-              boot.loader.grub.zfsSupport = true;
+	      boot.loader.grub.efiInstallAsRemovable = true;
 	      networking.hostId = "4e98920d";
-              disko.devices.disk.root.device =
+              disko.devices.disk.main.device =
                 "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNX0T711652Z_1";
             }
           ];
