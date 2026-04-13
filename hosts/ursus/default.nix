@@ -60,25 +60,20 @@
     "rd.udev.log_level=3"
     #"i915.force_probe=!56a1"
   ];
-  boot.initrd.systemd.enable = true;
-  boot.plymouth.enable = false;
-  # Use the systemd-boot EFI boot loader.
   boot.loader = {
-    systemd-boot = {
+    grub = {
       enable = true;
       configurationLimit = 7;
     };
     efi.canTouchEfiVariables = true;
   };
   boot.supportedFilesystems = {
-    f2fs = true;
     ntfs = true;
   };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   #############################################################################
   # NETWORKING Options
   networking.hostName = "ursus";
-  networking.hostId = "3803798b";
   # Network configuration
   networking = {
     networkmanager = {
@@ -90,7 +85,6 @@
       ];
     };
   };
-  services.mullvad-vpn.enable = true;
   programs.nm-applet.enable = true;
   #############################################################################
   # LOCALE Settings
@@ -165,7 +159,7 @@
   users.users.faq0n = {
     isNormalUser = true;
     home = "/home/faq0n";
-    initialHashedPassword = "$y$j9T$9.BTpP4Ool9fvpzy.rURH0$2mWQXd752oFtwHzKFUqdc/TbGqerpMdbwcmTMtenj4.";
+    initialPassword = "123456";
     createHome = true;
     extraGroups = [
       "wheel"
@@ -222,27 +216,6 @@
     libmtp
     usbutils
 
-    # Python Global Environment (here to avoid environment clashes)
-    (
-      let
-        my-python-packages =
-          python-packages: with python-packages; [
-            # Language server protocol
-            black
-            # Documentation
-            mkdocs
-            # Linters
-            mypy
-            pylint
-            # utilities
-            libsecret
-            # Dependencies
-            pickleshare
-          ];
-        python-with-my-packages = python3.withPackages my-python-packages;
-      in
-      python-with-my-packages
-    )
   ];
 
   programs.firefox.enable = true;
