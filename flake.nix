@@ -110,6 +110,7 @@
             {
               imports = [ ./hosts/ursus/disko-config.nix ];
               boot.supportedFilesystems = [ "zfs" ];
+	      networking.hostId = "94c3a16c";
             }
           ];
 

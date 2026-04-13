@@ -67,7 +67,6 @@
       efiSupport = true;
       configurationLimit = 7;
     };
-    efi.canTouchEfiVariables = true;
   };
   boot.supportedFilesystems = {
     ntfs = true;
