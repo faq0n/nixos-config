@@ -63,6 +63,8 @@
   boot.loader = {
     grub = {
       enable = true;
+      efiInstallAsRemovable = true;
+      efiSupport = true;
       configurationLimit = 7;
     };
     efi.canTouchEfiVariables = true;
