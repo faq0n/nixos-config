@@ -38,7 +38,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    preservation = {
+       url = "github:nix-community/preservation";
+       inputs.nixpkgs.follows = "nixpkgs";
+    }
+    
     # Secret Management
     agenix = {
       url = "github:ryantm/agenix";
@@ -57,6 +61,7 @@
 	i915-sriov,
 	helix,
 	home-manager,
+	preservation,
 	disko,
 	agenix,
 	... 
@@ -95,6 +100,7 @@
 	system = "x86_64-linux";
 	modules =  [
 	  nixos-hardware.nixosModules.common-gpu-intel
+	  preservation.nixosModules.default
 	  { 
             home-manager.users.faq0n = import ./home.nix;
 	    	home-manager.extraSpecialArgs = { inherit inputs secrets; };
