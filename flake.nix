@@ -1,5 +1,5 @@
 {
-  description = "A flake for my NixOS configuration - 2026 Edition";
+  description = "A flake for my Big Five";
 
   inputs = {
 
@@ -97,13 +97,11 @@
 	  nixos-hardware.nixosModules.common-gpu-intel
 	  { 
             home-manager.users.faq0n = import ./home.nix;
-	    home-manager.extraSpecialArgs = { inherit inputs secrets; };
+	    	home-manager.extraSpecialArgs = { inherit inputs secrets; };
 	  }
 	  {
            imports = [ ./hosts/ursus/disko-config.nix ];
-           boot.supportedFilesystems = [ "zfs" ];
-           boot.zfs.devNodes = "/dev/disk/by-uuid";
-           #boot.zfs.forceImportAll = true;
+           boot.supportedFilesystems = [ "btrfs" ]
            disko.devices.disk.root.device =
               "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_500GB_S4EVNX0T711652Z_1";
            disko.devices.disk.data1.device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_2TB_S6Z2NU0XA82280B_1";
@@ -113,7 +111,7 @@
       
       };
 
-      # server 
+      # cloud server 
       manatee = mkSystem {
         hostname = "manatee";
 	system = "x86_64-linux";
@@ -136,13 +134,13 @@
         ];
       };
 
-      # Example ARM Server
+      # Example aarch64 host
       arm-server = mkSystem {
         hostname = "arm-server";
         system = "aarch64-linux";
       };
 
-      # Example Host (x86)
+      # Example x86 host
       mynixos = mkSystem {
         hostname = "mynixos";
         system = "x86_64-linux";
