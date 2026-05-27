@@ -18,6 +18,7 @@
   imports = [
     # Hardware of current machine
     ./hardware-configuration.nix
+    ./preservation.nix
   ];
 
   #############################################################################
