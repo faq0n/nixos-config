@@ -63,8 +63,8 @@
 
         subvolumes = {
           "/persist" = {
-            mountOptions = ["subvol=persistent" "noatime"];
-            mountpoint = "/persistent";
+            mountOptions = ["subvol=persist" "noatime"];
+            mountpoint = "/persist";
           };
 
           "/nix" = {
