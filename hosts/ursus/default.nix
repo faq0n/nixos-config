@@ -90,7 +90,7 @@
       ];
     };
   };
-  services.mullvad-vpn.enable = true;
+  services.mozillavpn.enable = true;
   programs.nm-applet.enable = true;
   #############################################################################
   # LOCALE Settings
